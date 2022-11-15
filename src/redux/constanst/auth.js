@@ -1,0 +1,3 @@
+export const SUnGUP_REQUEST = 'SIGNUP_REQUEST'
+export const SINGUP_SUCCESS =  'SIGNUP_SUCCESS'
+export const SINGUP_FAIL =  'SIGNUP_FAIL'
