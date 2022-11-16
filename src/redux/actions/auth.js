@@ -2,10 +2,10 @@ import axios from "axios";
 import { SINGUP_SUCCESS, SINGUP_FAIL } from "../constanst/auth";
 
 
-export const singup = (username, first_name, last_name, email, password,repassword) => async dispatch =>{
+export const signup = (username, first_name, last_name, email, password,re_password) => async dispatch =>{
     const config = {
         headers: {
-            'Content-type': 'application/json'
+            'Content-Type': 'application/json'
         }        
     }
     const body = JSON.stringify({
@@ -14,8 +14,9 @@ export const singup = (username, first_name, last_name, email, password,repasswo
         last_name,
         email,
         password,
-        repassword
+        re_password
     })
+    console.log(body)
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config)
         if(res.status === 201){

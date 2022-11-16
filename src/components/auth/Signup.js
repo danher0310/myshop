@@ -1,14 +1,19 @@
 import Layout from "../../hocs/Layout"
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
+import { connect } from "react-redux";
+import { signup } from '../../redux/actions/auth'
 
-function Signup() {
-
+function Signup({
+    signup
+}) {
+    
     //  se quedo en el 1:46:00
     useEffect(() => {
     window.scrollTo(0,0)
     }, [])
     
+    const [accountCreated, setAccountCreated] = useState(false);
     const [formData, setFormData ] = useState ({
         first_name: '',
         last_name : '',
@@ -31,7 +36,16 @@ function Signup() {
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
     const onSubmit = e =>{
         e.preventDefault();
-        console.log(formData)
+        signup(
+            username,
+            first_name,
+            last_name,
+            email,            
+            password,
+            re_password
+        )
+        
+        setAccountCreated(true);
 
     }
 
@@ -63,21 +77,23 @@ function Signup() {
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <form onSubmit={e=>onSubmit(e)} className="space-y-6" action="#" method="POST">
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                            Email address
+                        <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                            Username
                         </label>
                         <div className="mt-1">
                             <input
-                            id="email"
-                            name="email"
-                            value ={email}
+                            id="username"
+                            name="username"
+                            value={username}
                             onChange={e=>onChange(e)}
-                            type="email"                        
+                            type="text"                        
                             required
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
                         </div>
                     </div>
+                    
+                    
                     <div>
                         <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
                             First Name
@@ -112,16 +128,16 @@ function Signup() {
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                            Username
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                            Email address
                         </label>
                         <div className="mt-1">
                             <input
-                            id="username"
-                            name="username"
-                            value={username}
+                            id="email"
+                            name="email"
+                            value ={email}
                             onChange={e=>onChange(e)}
-                            type="text"                        
+                            type="email"                        
                             required
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
@@ -201,5 +217,9 @@ function Signup() {
       </Layout>
     )
   }
-  
-export default Signup
+const mapStateToProps = state =>({
+
+})
+export default connect(mapStateToProps, {
+    signup
+}) (Signup)
