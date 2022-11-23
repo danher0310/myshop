@@ -1,3 +1,19 @@
 export const SUnGUP_REQUEST = 'SIGNUP_REQUEST'
 export const SINGUP_SUCCESS =  'SIGNUP_SUCCESS'
 export const SINGUP_FAIL =  'SIGNUP_FAIL'
+
+export const ACTIVATION_SUCCESS = 'ACTIVATION_SUCESS';
+export const  ACTIVATION_FAIL  = 'ACTIVATION_FAIL'
+
+export const SET_AUTH_LOADING = 'SET_AUTH_LOADING'
+export const REMOVE_AUTH_LOADING = 'REMOVE_AUTH_LOADING'
+
+export const LOGIN_SUCCESS =  'LOGIN_SUCCESS'
+export const LOGIN_FAIL =  'LOGIN_FAIL'
+
+
+//alerts 
+
+export const SET_ALERT= 'SET_ALERT'
+export const REMOVE_ALERT = 'REMOVE_ALERT'
+
